@@ -23,7 +23,14 @@
                                 <!-- <th>Folio: {{list.folio}}</th> -->
 
                                 <th>{{list.name}}</th>
-                                <th>{{list.url}}</th>
+                                <th>
+                                    <!-- <td mat-cell *matCellDef="let element"> -->
+                                        <img src="{{list.url}}" alt="pokemon" width="200" height="200">
+                                    
+                                    <!-- {{list.url}} -->
+                                    <!-- <img src="{{list.url}}" alt="pokemon" width="100" height="100"> -->
+
+                                </th>
 
                             </tr>
                         </tbody>
