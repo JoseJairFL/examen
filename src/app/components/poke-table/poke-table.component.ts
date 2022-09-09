@@ -3,6 +3,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { IPokemonResponse } from '../interfaces/ipokemonResponse';
 
 @Component({
   selector: 'app-poke-table',
@@ -15,9 +16,11 @@ export class PokeTableComponent implements OnInit {
   data: any[] = [];
   dataSource = new MatTableDataSource<any>(this.data);
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
 
-  pokemons = [];
+ public pokemons:IPokemonResponse[] = [];
+
+
 
   constructor(private pokemonService: PokemonService, private router: Router) { }
 
@@ -25,43 +28,31 @@ export class PokeTableComponent implements OnInit {
     this.getPokemons();
   }
 
-  getPokemons() {
-    let pokemonData;
-    
-    for (let i = 1; i <= 150; i++) {
-      this.pokemonService.getPokemons(i).subscribe(
-        res => {
-          pokemonData = {
-            position: i,
-            image: res.sprites.front_default,
-            name: res.name
-          };
-          //ponemos la data que viene del servicio en un arreglo
-          this.data.push(pokemonData);
-          this.dataSource = new MatTableDataSource<any>(this.data);
-          this.dataSource.paginator = this.paginator;
-        },
-        err => {
-          console.log(err);
-        }
-      );
+  async getPokemons() {
+    try {
+      this.pokemons = await this.pokemonService.getPokemons(100);
+      console.log(this.pokemons)
+     
+    } catch (error) {
+      console.log(error);
     }
+
   }
 
   //Filtro para el paginador
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  // applyFilter(event: Event) {
+  //   const filterValue = (event.target as HTMLInputElement).value;
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
+  //   if (this.dataSource.paginator) {
+  //     this.dataSource.paginator.firstPage();
+  //   }
+  // }
 
- //Obtiene elemento seleccionado
-  getRow(row: { position: any; }){
-    //console.log(row);
-    this.router.navigateByUrl(`/pokeDetail/${row.position}`)
-  }
+  //Obtiene elemento seleccionado
+  // getRow(row){
+  //   //console.log(row);
+  //   this.router.navigateByUrl(`/pokeDetail/${row.position}`)
+  // }
 
 }

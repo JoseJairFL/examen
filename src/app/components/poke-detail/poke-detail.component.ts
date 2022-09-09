@@ -16,28 +16,28 @@ export class PokeDetailComponent implements OnInit {
   constructor(private activatedRouter: ActivatedRoute,
     private pokemonService: PokemonService) {
     //obtiene parametro de la url
-    this.activatedRouter.params.subscribe(
-      params => {
-        this.getPokemon(params['id']);
-      }
-    )
+    // this.activatedRouter.params.subscribe(
+    //   params => {
+    //     this.getPokemon(params['id']);
+    //   }
+    // )
   }
 
   ngOnInit(): void {
   }
 
-  getPokemon(id: number) {
-    this.pokemonService.getPokemons(id).subscribe(
-      res => {
-        console.log(res);
-        this.pokemon = res;
-        this.pokemonImg = this.pokemon.sprites.front_default;
-        this.pokemonType = res.types[0].type.name;
-      },
-      err => {
-        console.log(err);
-      }
-    )
-  }
+  // getPokemon(id: number) {
+  //   this.pokemonService.getPokemons(id).subscribe(
+  //     res => {
+  //       console.log(res);
+  //       this.pokemon = res;
+  //       this.pokemonImg = this.pokemon.sprites.front_default;
+  //       this.pokemonType = res.types[0].type.name;
+  //     },
+  //     err => {
+  //       console.log(err);
+  //     }
+  //   )
+  // }
 
 }
