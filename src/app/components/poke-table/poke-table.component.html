@@ -1,40 +1,44 @@
+<form style="background: white;">
+    <div class="container BvMHM EzUlV text-center"
+        style="padding: 2em;color: rgb(21, 17, 17);background-color: #b3b3b3">
+        <h3>Tabla de pokemons</h3>
+    </div>
 
- <div class="form-group row">
-    <div class="col-md-12">
-      <div class="form-group">
-        <div class="table-responsive">
-          <table class="table text-center">
-            <thead>
-              <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">imagen</th>
-                <!-- <th scope="col">Editar</th>
-                <th scope="col">Acciones</th> -->
-              </tr>
-            </thead>
+    <div class="form-group row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="table-responsive">
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">imagen</th>
+                            </tr>
+                        </thead>
 
 
-            <tbody>
-              <tr *ngFor="let list of pokemons">
+                        <tbody>
+                            <tr *ngFor="let list of pokemons">
 
-                <!-- <th>Folio: {{list.folio}}</th> -->
+                                <!-- <th>Folio: {{list.folio}}</th> -->
 
-                <th>{{list.name}}</th>
-                <th>{{list.url}}</th>
+                                <th>{{list.name}}</th>
+                                <th>{{list.url}}</th>
 
-              </tr>
-            </tbody>
+                            </tr>
+                        </tbody>
 
-          </table>
+                    </table>
 
-          <!-- Paginacion @AUTOR JAIR-->
-          <!-- <app-loader *ngIf="loaderGiro"></app-loader>
+               
+                    <!-- <app-loader *ngIf="loaderGiro"></app-loader>
           <mat-paginator *ngIf="!loaderGiro" [length]="lstCatIntegrantes.length" [pageSize]="pageSize"
             (page)="getPaginatorData($event)">
           </mat-paginator> -->
-          <!-- Paginacion de la lista de integrantes @AUTOR JAIR-->
+                  
 
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</form>
