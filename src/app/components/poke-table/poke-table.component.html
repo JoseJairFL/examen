@@ -31,10 +31,7 @@
                     </table>
 
                
-                    <!-- <app-loader *ngIf="loaderGiro"></app-loader>
-          <mat-paginator *ngIf="!loaderGiro" [length]="lstCatIntegrantes.length" [pageSize]="pageSize"
-            (page)="getPaginatorData($event)">
-          </mat-paginator> -->
+                 
                   
 
                 </div>
@@ -43,7 +40,7 @@
     </div>
     <br>
     <div align="end">
-        <button mat-raised-button color="primary">Siguiente Pagina</button>
+        <button mat-raised-button color="primary" (click)="listarSiguientes()">Siguiente Pagina</button>
     </div>
 </form>
 <br>

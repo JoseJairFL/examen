@@ -20,7 +20,7 @@ export class PokeTableComponent implements OnInit {
 
  public pokemons:IPokemonResponse[] = [];
 
-
+public range = 100
 
   constructor(private pokemonService: PokemonService, private router: Router) { }
 
@@ -30,7 +30,7 @@ export class PokeTableComponent implements OnInit {
 
   async getPokemons() {
     try {
-      this.pokemons = await this.pokemonService.getPokemons(100);
+      this.pokemons = await this.pokemonService.getPokemons(this.range);
       console.log(this.pokemons)
      
     } catch (error) {
@@ -38,7 +38,10 @@ export class PokeTableComponent implements OnInit {
     }
 
   }
+  listarSiguientes(){
+    this.range += 100;
 
+  }
   //Filtro para el paginador
   // applyFilter(event: Event) {
   //   const filterValue = (event.target as HTMLInputElement).value;
